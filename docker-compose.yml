@@ -1,0 +1,24 @@
+version: '3.7'
+
+services:
+    traefik:
+        image: traefik:v1.7
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+            - ./traefik.toml:/traefik.toml
+            - /var/run/docker.sock:/var/run/docker.sock
+            - ./acme:/etc/traefik/acme"
+        restart: always
+
+    apache:
+        image: httpd:2.4
+        volumes:
+            - ./site:/usr/local/apache2/htdocs/
+        restart: always
+        labels:
+            - "traefik.frontend.rule=Host:nicolasdubouilh.fr,www.nicolasdubouilh.fr"
+            - "traefik.backend=nicolasdubouilh.fr"
+            - "traefik.port=80"
+            - "traefik.enable=true"
