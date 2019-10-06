@@ -17,7 +17,9 @@ email = "contact@nicolasdubouilh.fr"
 storage = "acme.json"
 onHostRule = true
 entryPoint = "https"
-	[acme.tlsChallenge]
+	[acme.dnsChallenge]
+	provider = "ovh"
+	delayBeforeCheck = 0
 
 [docker]
 	endpoint = "unix:///var/run/docker.sock"
