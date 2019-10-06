@@ -13,13 +13,11 @@ defaultEntryPoints = ["http", "https"]
 dashboard = false
 
 [acme]
-email = "contact@nicolasdubouilh.fr"
+email = "hello@nicolasdubouilh.fr"
 storage = "acme.json"
 onHostRule = true
 entryPoint = "https"
-	[acme.dnsChallenge]
-	provider = "ovh"
-	delayBeforeCheck = 0
+	[acme.tlsChallenge]
 
 [docker]
 	endpoint = "unix:///var/run/docker.sock"
